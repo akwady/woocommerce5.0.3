@@ -25,10 +25,8 @@ foreach ($file_includes as $file) {
     if (!$filePath = locate_template($file)) {
         trigger_error(sprintf(__('Missing included file'), $file), E_USER_ERROR);
     }
-
     require_once $filePath;
 }
-
 unset($file, $filePath);
 
 //Giới Hạn Ký Tự

@@ -12,6 +12,8 @@ function theme_enqueue_script()
     // Register project js files
     $js_files = glob(THEME_DIR.'/js/*.js');
     foreach ( $js_files as $file ) {
+   
+
         $handle = $script_handle. '-' .basename($file, '.js');
         wp_register_script($handle, THEME_URL.'/js/'.basename($file), array('jquery'), false, true);
         wp_enqueue_script($handle);

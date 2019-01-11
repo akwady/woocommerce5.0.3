@@ -288,7 +288,6 @@ add_filter('widget_text', 'php_text', 99);
 
 // Bỏ Javascript mặc định wordpress tạo ra trên theme
 add_action( 'wp_enqueue_scripts', function () {
-   wp_deregister_script( 'jquery' );
    wp_deregister_script( 'wp-embed' );
 });
 
@@ -311,6 +310,4 @@ add_action( 'init', function () {
   // Bỏ rel next/prev links
   remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 });
-// code html giỏ hàng ajax
 
-?>
