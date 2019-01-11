@@ -1,4 +1,7 @@
-<?php get_header('shop'); ?>
+<?php get_header();
+get_template_part('sections/top-header')
+?>
+
 
 <section id="archive-product-page">
     <div class="container">

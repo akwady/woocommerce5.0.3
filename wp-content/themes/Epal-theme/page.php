@@ -2,7 +2,9 @@
 
 
 
-
+<?php get_header();
+    get_template_part('sections/top-header')
+?>
 
 
 
@@ -18,3 +20,5 @@
 
     </main>
 </div>
+
+<?php get_footer() ?>
