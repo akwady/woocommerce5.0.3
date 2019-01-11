@@ -1,6 +1,8 @@
 
 
-<!-- cart ajax chưa test -->
-<span class="cart-contents">
-<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
-</span>
+<a href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e('Giỏ hàng '); ?>">
+                        <span><i class="fas fa-shopping-cart"></i></span>
+                        <span>
+                            <?php echo sprintf(_n('(%d) <span>Sản Phẩm</span>', '(%d) <span>Sản Phẩm</span>', WC()->cart->cart_contents_count), WC()->cart->cart_contents_count); ?>
+                        </span>
+                    </a>

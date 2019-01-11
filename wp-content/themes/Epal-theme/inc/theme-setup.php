@@ -286,26 +286,6 @@ add_filter('widget_text', 'php_text', 99);
 
 
 
-// tạo Giỏ hàng Ajax- WooCommerce
-add_filter('add_to_cart_fragments', 'woocommerceframework_header_add_to_cart_fragment');
-  
-function woocommerceframework_header_add_to_cart_fragment( $fragments ) {
-    global $woocommerce;
-  
-    ob_start();
-  
-    ?>
-    <span class="cart-contents"><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a></span>
-    <?php
-  
-    $fragments['span.cart-contents'] = ob_get_clean();
-  
-    return $fragments;
-  
-}
-
-
-
 // Bỏ Javascript mặc định wordpress tạo ra trên theme
 add_action( 'wp_enqueue_scripts', function () {
    wp_deregister_script( 'jquery' );
