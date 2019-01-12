@@ -6,28 +6,6 @@ $storefront = (object) array(
 );
 
 
-//Code phan trang
-function devvn_wp_corenavi($custom_query = null, $paged = null) {
-    global $wp_query;
-    if($custom_query) $main_query = $custom_query;
-    else $main_query = $wp_query;
-    $paged = ($paged) ? $paged : get_query_var('paged');
-    $big = 999999999;
-    $total = isset($main_query->max_num_pages)?$main_query->max_num_pages:'';
-    if($total > 1) echo '<div class="pagenavi">';
-    echo paginate_links( array(
-        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-        'format' => '?paged=%#%',
-        'current' => max( 1, $paged ),
-        'total' => $total,
-        'mid_size' => '10', // Số trang hiển thị khi có nhiều trang trước khi hiển thị ...
-        'prev_text'    => __('<i class="fas fa-caret-left" ></i>','devvn'),
-        'next_text'    => __('<i class="fas fa-caret-right" ></i>','devvn'),
-    ) );
-    if($total > 1) echo '</div>';
-}
-
-
 //Sửa Đổi Mặc Định gallery của woocommerce
 add_action( 'after_setup_theme', 'yourtheme_setup' );
 function yourtheme_setup() {
@@ -129,5 +107,19 @@ function woocommerceframework_header_add_to_cart_fragment( $fragments ) {
     return $fragments;
 }
 
+
+// Giới hạn columns sản phẩm 
+function loop_columns() {
+    return 4; 
+}
+add_filter('loop_shop_columns', 'loop_columns', 999);
+
+
+// Giới hạn số lượng sản phẩm 
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+function new_loop_shop_per_page( $cols ) {
+    $cols = 12;
+    return $cols;
+}
 
 ?>
